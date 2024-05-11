@@ -1,0 +1,242 @@
+.wrapper {
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    perspective: 10px;
+}
+header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transform-style: preserve-3d;
+    z-index: -1;
+}
+
+.backgroundvid {
+    transform: translateZ(-10px) scale(2);
+}
+
+.backgroundvid {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+.main-section {
+    background-color: white;
+}
+
+.summertxt{
+    font-size: 2rem;
+    margin-top: 32rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+.himherbtns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button.himbtn {
+        font-size: 18px;
+        padding: 15px;
+        border: 2px solid #FFF;
+        border-radius: 3px;
+        color: #000;
+        display: block;
+        background: #FFF;
+        transition: .4s ease-in-out 0s;
+}
+
+button.himbtn:hover {
+    cursor: pointer;
+    transform: scale(.9);
+    background: #FFF;
+    color: #000;
+}
+button.herbtn {
+    
+    font-size: 18px;
+    padding: 15px;
+    border-radius: 3px;
+    border: 2px solid #FFF;
+    color: #000;
+    display: block;
+   margin-left: 1rem;
+    background: #FFF;
+    transition: .4s ease-in-out 0s;
+}
+
+button.herbtn:hover {
+    cursor: pointer;
+    transform: scale(.9);
+    background: #FFF;
+    color: #000;
+}
+.tagline{
+    display: grid;
+    place-content: center;
+    height: 70vh;
+    padding: 4rem;
+}
+
+
+/* tagline css */
+
+.reveal-type {
+    box-shadow: inset 0 0 0 0 #54b3d6;
+    color: #54b3d6;
+    padding: 14px ;
+    margin: 0 ;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.reveal-type:hover {
+    color: #fff;
+    box-shadow: inset 65rem 0 0 0 #54b3d6;
+    ;
+}
+
+/* Presentational styles */
+.reveal-type{
+    color: #54b3d6;
+    font-size: 10rem;
+    font-weight: 500;
+    line-height: 1;
+    text-decoration: none;
+}
+
+
+/* fireship animation */
+
+.hidden {
+    opacity: 0;
+    transform: translateY(40%);
+    transition: all 1.3s;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(-10%);
+}
+
+.photo-cards{
+    display: flex;
+    justify-content: center;
+
+}
+.imgtag{
+    width:30vw;
+
+}
+
+.photo-cards{
+    background-color: #F5E9DC;
+    padding: 10px;
+
+}
+#imgtag2{
+    margin-left: 1rem;
+}
+
+
+.roller {
+    margin-top: 4rem;
+    background-color: #54b3d6;
+    color: white;
+    text-transform: uppercase;
+    overflow-x: hidden;
+
+    &>div {
+        display: flex;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        min-width: 100%;
+
+        .news-message {
+            display: flex;
+            flex-shrink: 0;
+            height: 6rem;
+            align-items: center;
+            animation: slide-left 25s linear infinite;
+
+            p {
+                font-size: 4em;
+                font-weight: 400;
+                padding-left: 0.5em;
+            }
+        }
+    }
+}
+
+@keyframes slide-left {
+    from {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+
+    to {
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+}
+
+
+
+.quote{
+color: #54b3d6;
+
+    font-size: 5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    text-decoration: none;
+}
+#quotehidden{
+    display: grid;
+    place-content: center;
+    padding: 5rem;
+    margin-top: 7rem;
+    
+}
+.videowindowheader{
+    display:grid;
+    place-content: center;
+    padding: 3rem;
+    margin-top: 5rem;
+}
+
+.videowindowvid{
+    border-radius: 5px;
+}
+
+
+
+
+.boldimg,.beautifulimg{
+    width: 30vw;
+}
+.boldtxt,.beautifultxt{
+    /* color: #54b3d6; */
+        font-size: 5rem;
+        font-weight: 500;
+        line-height: 1.2;
+        text-decoration: none;
+}
+.beautifuldiv{
+    margin-left: 2rem;
+}
+.photo-cards2{
+    margin-top: 5rem;
+    display: flex;
+     justify-content: center;
+    background-color: #F5E9DC;
+    padding: 10px;
+}
+@media(prefers-reduced-motion){
+    .hidden{
+        transition: none;
+    }
+}

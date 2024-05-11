@@ -1,0 +1,35 @@
+.navbar {
+    background-color: transparent;
+    position: fixed;
+    padding-top: 1.5rem;
+    width: 100%;
+    z-index: 999;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    flex-grow: 1;
+    /* Take all available space */
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 2rem;
+    font-weight: 400;
+}
+.rightbtns {
+    display: flex;
+    
+}
+
+.bag,
+.account {
+    padding-right: 1.5rem;
+    cursor: pointer;
+}
+.baglogo,.userlogo{
+    font-size: 1.5rem;
+}
+
