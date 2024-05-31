@@ -18,7 +18,7 @@ const Landing = () => {
           entry.target.classList.add('show');
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.4 });
 
     hiddenElementsRef.current.forEach((el) => {
       if (el) observer.observe(el);

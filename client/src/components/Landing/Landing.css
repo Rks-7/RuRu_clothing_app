@@ -115,7 +115,7 @@ button.herbtn:hover {
 .hidden {
     opacity: 0;
     transform: translateY(40%);
-    transition: all 1.3s;
+    transition: all 1.2s;
 }
 
 .show {
@@ -220,7 +220,7 @@ color: #54b3d6;
 }
 .boldtxt,.beautifultxt{
     /* color: #54b3d6; */
-        font-size: 5rem;
+        font-size: 5em;
         font-weight: 500;
         line-height: 1.2;
         text-decoration: none;

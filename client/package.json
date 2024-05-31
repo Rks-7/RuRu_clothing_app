@@ -10,6 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.17",
+    "axios": "^1.7.2",
     "framer-motion": "^11.1.9",
     "gsap": "^3.12.5",
     "lenis": "^1.0.45",

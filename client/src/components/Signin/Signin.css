@@ -1,0 +1,48 @@
+.signindiv{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+
+}
+
+.signincard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    margin-top: 12rem;
+    margin-bottom: 1rem;
+    width: 20rem;
+    box-shadow: 0 0 10px rgba(84, 179, 214, 0.5)
+}
+.signininput{
+    width: 20rem;
+}
+.signinhead{
+    font-size: 2rem;
+}
+
+.signinbutton{
+    font-size: 18px;
+        padding: 15px;
+        border: 2px solid #54b3d6;
+        border-radius: 5px;
+        font-family: 'Times New Roman', Times, serif;
+        color: #FFF;
+        display: block;
+        background: #54b3d6;
+        transition: .4s ease-in-out 0s;
+        width: 8rem;
+}
+
+.signinbutton:hover {
+    cursor: pointer;
+    transform: scale(.9);
+    background: #FFF;
+    color: #000;
+}
+
+.errortext{
+    color: red;
+}
