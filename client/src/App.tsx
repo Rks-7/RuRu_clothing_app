@@ -7,21 +7,23 @@ import Signup from './components/Signin/Signup';
 import {
   RecoilRoot
 } from 'recoil';
+import Product from './components/Product/Product';
 
 function App() {
 
   return (
     <RecoilRoot>
-      <Navbar/>
       <Router>
+        <Navbar />
         <Routes>
-        <Route path={"/"} element={<Landing/>} />
-        <Route path={"/signin"} element={<Signin/>} />
-        <Route path={"/signup"} element={<Signup/>} />
+          <Route path={"/"} element={<Landing />} />
+          <Route path={"/signin"} element={<Signin />} />
+          <Route path={"/signup"} element={<Signup />} />
+          <Route path={"/product"} element={<Product />} />
         </Routes>
       </Router>
     </RecoilRoot>
-  )
+  );
 }
 
 export default App

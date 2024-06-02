@@ -1,0 +1,124 @@
+.product-card{
+    width: 18vw;
+    display: grid;
+    place-content: center;
+    margin: 1rem;
+}
+.product-card:hover{
+    cursor: pointer;
+    transform: scale(1.01);
+    box-shadow: 0 8px 16px rgba(84, 179, 214, 0.2);
+}
+.product-img{
+    width: 18vw;
+    height: 40vh;
+    object-fit: cover;
+}
+
+.product-price{
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.product-description{
+    padding: 0.5rem;
+
+
+}
+
+.productcard-main{
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.product-main{
+    position: relative;
+        top: 5rem;
+}
+
+.filter-main{
+    
+    display: flex;
+    padding: 1rem;
+    border: solid 1px black;
+}
+.searchbar{
+    margin-left: 1rem;
+    height: 1.5rem;
+    width: 15rem;
+}
+
+.filter-text{
+    margin-left: 1rem;
+    padding: 5px;
+    cursor: pointer;
+}
+.filter-text:hover{
+    background-color: #54b3d6;
+    color: white;
+}
+.search-icon{
+    margin-left: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.pagination-main{
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.page-item{
+    background-color: white;
+        color: #54b3d6;
+     display: flex;
+     justify-content: center;
+     padding: 0.7rem;
+     margin: 4px;
+     cursor: pointer;
+     border: solid #54b3d6 1px;
+}
+.page-item:hover{
+    background-color: #54b3d6;
+    color: white;
+}
+.pagination-link{
+    font-size: 2rem;
+}
+
+/* .product-account {
+    padding-left: 1.5rem;
+} */
+
+/* Dropdown content */
+.product-dropdown-content {
+    display: none;
+    /* Initially hidden */
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    /* Ensure it's above everything */
+}
+
+.product-account:hover .product-dropdown-content {
+    display: block;
+    /* Show dropdown when hovering over account */
+}
+
+/* Style the dropdown links */
+.product-dropdown-content div {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of links on hover */
+.product-dropdown-content div:hover {
+    background-color: #f1f1f1;
+}

@@ -17,7 +17,8 @@ const Signup = () => {
     const [invalidusername, setinvalidusername] = useState(false);
     const [password, setpassword] = useState("");
     const [username, setusername] = useState("");
-    const setUser=useSetRecoilState(userState)
+    const setUser=useSetRecoilState(userState);
+
 
     const emailregex=/^[^/s@]+@[^/s@]+\.[^/s@]+$/;
     const passowrdregex=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-za-z\d@$!%*?&]{8,}$/;
