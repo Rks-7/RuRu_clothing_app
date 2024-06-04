@@ -34,26 +34,41 @@ const Navbar = () => {
           {isDropdownOpen && (
             <div className="dropdown-content">
               {/* Dropdown content goes here */}
-              {User.userEmail!==null ? (
-                 
+              {User.userEmail !== null ? (
                 <div onClick={handleLogout}>LOGOUT</div>
-                  
-              ):(
-                <div onClick={()=>{
-                  navigate('/signin');
-                }}>SIGN IN</div>
+              ) : (
+                <div
+                  onClick={() => {
+                    navigate("/signin");
+                  }}
+                >
+                  SIGN IN
+                </div>
               )}
-              <div onClick={()=>{
-                if(User.userEmail!==null){
-                  //path to the orders section of the user 
-                }
-              }}>ORDERS</div>
+              <div
+                onClick={() => {
+                  if (User.userEmail !== null) {
+                    //path to the orders section of the user
+                  }
+                }}
+              >
+                ORDERS
+              </div>
               <div>ACCOUNT</div>
             </div>
           )}
         </div>
-        <a href="/" className="logo">
-          <div>RuRu</div>
+        <a className="logo">
+          <div>
+            <p
+              onClick={() => {
+                navigate("/");
+              }}
+              className="rurulogo"
+            >
+              RuRu
+            </p>{" "}
+          </div>
         </a>
         <div className="rightbtns">
           <div className="bag">

@@ -85,6 +85,10 @@
     background-color: #54b3d6;
     color: white;
 }
+.page-item.active{
+    background-color: #54b3d6;
+    color: white;
+}
 .pagination-link{
     font-size: 2rem;
 }
@@ -121,4 +125,10 @@
 /* Change color of links on hover */
 .product-dropdown-content div:hover {
     background-color: #f1f1f1;
+}
+
+.option.active{
+    background-color: #f1f1f1;
+    color: #54b3d6;
+
 }

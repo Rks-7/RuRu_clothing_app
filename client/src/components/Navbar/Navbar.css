@@ -12,8 +12,12 @@
     align-items: center;
 }
 
+.rurulogo{
+    cursor: pointer;
+}
+
 .logo {
-    flex-grow: 1;
+   
     text-align: center;
     text-decoration: none;
     color: black;
@@ -38,6 +42,12 @@
 
 .account{
     padding-left: 1.5rem;
+    position: absolute;
+    left: 0;
+}
+.bag{
+    position:absolute;
+    right: 0;
 }
 
 /* Dropdown content */

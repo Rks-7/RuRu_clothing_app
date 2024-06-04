@@ -4,6 +4,7 @@ import Landing from "./components/Landing/Landing";
 import Navbar from "./components/Navbar/Navbar";
 import Signin from "./components/Signin/Signin";
 import Signup from './components/Signin/Signup';
+import Singleproduct from './components/Singleproduct/Singleproduct';
 import {
   RecoilRoot
 } from 'recoil';
@@ -20,6 +21,7 @@ function App() {
           <Route path={"/signin"} element={<Signin />} />
           <Route path={"/signup"} element={<Signup />} />
           <Route path={"/product"} element={<Product />} />
+          <Route path={"/product/:productId"} element={<Singleproduct />} />
         </Routes>
       </Router>
     </RecoilRoot>
