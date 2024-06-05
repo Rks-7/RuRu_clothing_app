@@ -413,6 +413,7 @@ function ProductCard({ product }: ProductCardProps) {
           <p className="product-price">₹{product.price}</p>
         </div>
       </Card>
+      
     </div>
   );
 }

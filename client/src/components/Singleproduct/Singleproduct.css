@@ -71,3 +71,49 @@
     width: 30vw;
 
 }
+.materials{
+    font-size: 1.2rem;
+    color: white;   
+}
+.materialheadingdiv{
+    background-color: #54b3d6;
+    padding: 0.5rem;
+    border-radius: 5px;
+    width: fit-content;
+}
+.carebulletpoint{
+    padding:0.2rem
+}
+.relatedproductdiv{
+    background-color: #F5E9DC;
+    padding: 2rem;
+    border-radius: 5px;
+    
+}
+.relatedcarousel{
+        display: flex;
+        justify-content: center;
+}
+.relatedmain{
+    padding:2rem;
+}
+
+.seemorebtn{
+    background-color: #54b3d6;
+    color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    width: fit-content;
+}
+.seemorebtnmain{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+.seemorebtn:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+.seemorebtnmain a{
+    text-decoration: none;
+}

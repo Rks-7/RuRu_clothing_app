@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Signin from "./components/Signin/Signin";
 import Signup from './components/Signin/Signup';
 import Singleproduct from './components/Singleproduct/Singleproduct';
+import Footer from "./components/Footer/Footer"
 import {
   RecoilRoot
 } from 'recoil';
@@ -23,6 +24,7 @@ function App() {
           <Route path={"/product"} element={<Product />} />
           <Route path={"/product/:productId"} element={<Singleproduct />} />
         </Routes>
+        <Footer/>
       </Router>
     </RecoilRoot>
   );
