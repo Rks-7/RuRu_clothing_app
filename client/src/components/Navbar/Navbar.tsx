@@ -54,7 +54,9 @@ const Navbar = () => {
               >
                 ORDERS
               </div>
-              <div>ACCOUNT</div>
+              <div onClick={()=>{
+                navigate('/account')
+              }}>ACCOUNT</div>
             </div>
           )}
         </div>

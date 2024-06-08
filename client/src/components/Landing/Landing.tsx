@@ -6,6 +6,7 @@ import beautifulvid from "../../assets/beautifulvid.mp4"
 import "./Landing.css";
 import dress from "../../assets/dress.jpeg"
 import blackshirt from "../../assets/blackwhite.jpeg"
+import Footer from "../Footer/Footer"
 
 const Landing = () => {
   // Create a ref for the hidden elements
@@ -153,7 +154,7 @@ const Landing = () => {
 
 
         
-
+      <Footer/>
           
 
          

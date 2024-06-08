@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { ObjectId } from "bson";
 import { useSetRecoilState } from "recoil";
 import { productState } from "../../store/atoms/product";
+import Footer from "../Footer/Footer";
 
 interface Review {
   _id: ObjectId;
@@ -372,6 +373,9 @@ const Product = () => {
         pagination={pagination}
         currentPage={currentPage}
       />
+      <br />
+      <br/>
+      <Footer/>
     </div>
   );
 };

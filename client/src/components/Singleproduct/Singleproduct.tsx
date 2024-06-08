@@ -6,6 +6,7 @@ import { Card } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../config';
 import axios from 'axios';
+import Footer from '../Footer/Footer';
 
 
 type RouteParams={
@@ -174,7 +175,7 @@ const Singleproduct = () => {
             {relatedprod.map((prod) => {
               return (
                 <div>
-                  <a href={`/product/${prod?._id}`}>
+                  <a href={`/product/${prod?._id}`} className="relatedlink">
                     <Card className="product-card">
                       <img
                         src={prod?.productimg[0]}
@@ -200,6 +201,9 @@ const Singleproduct = () => {
           </div>
         </div>
       </div>
+      <br />
+      <br />
+      <Footer />
     </div>
   );
 }

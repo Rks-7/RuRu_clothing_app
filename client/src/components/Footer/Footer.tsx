@@ -1,4 +1,7 @@
-import React from 'react'
+import React from 'react';
+import { FaLinkedinIn } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa";
 import "./Footer.css"
 
 const Footer = () => {
@@ -13,55 +16,30 @@ const Footer = () => {
               services.
             </p>
           </div>
-          <div className="footer-section links">
-            <h3>Quick Links</h3>
-            <ul>
-              <li>
-                <a href="/home">Home</a>
-              </li>
-              <li>
-                <a href="/about">About</a>
-              </li>
-              <li>
-                <a href="/services">Services</a>
-              </li>
-              <li>
-                <a href="/contact">Contact</a>
-              </li>
-            </ul>
-          </div>
+
           <div className="footer-section contact">
             <h3>Contact Us</h3>
             <p>Email: rugvedscindia@gmail.com</p>
-            <p>Phone: +123 456 7890</p>
           </div>
           <div className="footer-section social">
             <h3>Follow Us</h3>
+            <br />
             <a
-              href="https://facebook.com"
+              href="https://www.linkedin.com/in/rugved-shinde-04ab2417b/"
               target="_blank"
-              rel="noopener noreferrer"
             >
-              <i className="fab fa-facebook-f"></i>
+              <FaLinkedinIn />
             </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="fab fa-twitter"></i>
+            <a href="https://twitter.com/Rugved71" target="_blank">
+              <FaXTwitter />
             </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="fab fa-instagram"></i>
+            <a href="https://github.com/Rks-7" target="_blank">
+              <FaGithub />
             </a>
           </div>
         </div>
         <div className="footer-bottom">
-          &copy; {new Date().getFullYear()} Your Company. All rights reserved.
+          &copy; {new Date().getFullYear()} RuRu Clothing. All rights reserved.
         </div>
       </footer>
     </div>
