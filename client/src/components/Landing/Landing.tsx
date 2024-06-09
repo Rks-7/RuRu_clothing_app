@@ -7,9 +7,10 @@ import "./Landing.css";
 import dress from "../../assets/dress.jpeg"
 import blackshirt from "../../assets/blackwhite.jpeg"
 import Footer from "../Footer/Footer"
+import { useNavigate } from 'react-router-dom';
 
 const Landing = () => {
-  // Create a ref for the hidden elements
+  const navigate=useNavigate();
   const hiddenElementsRef = useRef<Array<HTMLElement | null>>([]);
 
   useEffect(() => {
@@ -46,8 +47,8 @@ const Landing = () => {
           <div>
             <div className='summertxt'> RuRu Summer Collection</div>
             <div className='himherbtns'>
-              <button className='himbtn'>For Him</button>
-              <button className='herbtn'>For Her</button>
+              <button className='himbtn' onClick={()=>navigate('/product')}>EXPLORE</button>
+              {/* <button className='herbtn'>For Her</button> */}
             </div>
           </div>
         </header>

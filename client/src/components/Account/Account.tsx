@@ -87,6 +87,7 @@ function Accountdetails({ user }: AccountDetailsProps) {
   const [mobileno, setmobileno] = useState(user?.mobileno);
   const [email, setemail] = useState(user?.email);
   const [address, setaddress] = useState<IAddress[]>([]);
+  const [editInd, seteditInd] = useState(-1);
 
   useEffect(() => {
     if (user) {
@@ -99,7 +100,7 @@ function Accountdetails({ user }: AccountDetailsProps) {
   }, [user]);
 
   return (
-    <div>
+    <div className="accountoption-section">
       <h3>Username:</h3>
       <br />
       <div className="usernametxt">
@@ -164,22 +165,119 @@ function Accountdetails({ user }: AccountDetailsProps) {
         <div className="addressdiv">
           <p className="emailtxt">Address {adrindex + 1}:</p>
           <br />
-          <p>
-            {adr.address}
-            <br />
-            {adr.city_district}
-            <br />
-            {adr.pincode}
-            <br />
-            {adr.state}
-            <br />
-            {adr.town}
-          </p>
+          {editInd != -1 ? (
+            <div>
+              <div className="addresseditmain">
+                Address:
+                <br />
+                <TextField
+                  label=""
+                  variant="outlined"
+                  fullWidth={true}
+                  value={adr.address}
+                  onChange={(e: any) => {
+                    const updatedaddress = [...address];
+                    updatedaddress[adrindex + 1].address = e.target.value;
+                    setaddress(updatedaddress);
+                  }}
+                />
+              </div>
+              <br />
+              <div className="cityandpincode">
+                <div className="cityeditmain">
+                  City:
+                  <br />
+                  <TextField
+                    label=""
+                    variant="outlined"
+                    value={adr.city_district}
+                    onChange={(e: any) => {
+                      const updatedaddress = [...address];
+                      updatedaddress[adrindex + 1].city_district =
+                        e.target.value;
+                      setaddress(updatedaddress);
+                    }}
+                  />
+                </div>
+                <div className="towneditmain">
+                  Pincode:
+                  <br />
+                  <TextField
+                    label=""
+                    variant="outlined"
+                    value={adr.pincode}
+                    onChange={(e: any) => {
+                      const updatedaddress = [...address];
+                      updatedaddress[adrindex + 1].pincode = e.target.value;
+                      setaddress(updatedaddress);
+                    }}
+                  />
+                </div>
+              </div>
+              <br />
+              <br />
+              <div className="cityandpincode">
+                <div className="stateeditmain">
+                  State:
+                  <br />
+                  <TextField
+                    label=""
+                    variant="outlined"
+                    value={adr.state}
+                    onChange={(e: any) => {
+                      const updatedaddress = [...address];
+                      updatedaddress[adrindex + 1].state = e.target.value;
+                      setaddress(updatedaddress);
+                    }}
+                  />
+                </div>
+                <div className="towneditmain">
+                  Town:
+                  <br />
+                  <TextField
+                    label=""
+                    variant="outlined"
+                    value={adr.town}
+                    onChange={(e: any) => {
+                      const updatedaddress = [...address];
+                      updatedaddress[adrindex + 1].town = e.target.value;
+                      setaddress(updatedaddress);
+                    }}
+                  />
+                </div>
+              </div>
+              <br />
+                   
+            </div>
+          ) : (
+            <div>
+              <p>
+                {adr.address}
+                <br />
+                {adr.city_district}
+                <br />
+                {adr.pincode}
+                <br />
+                {adr.state}
+                <br />
+                {adr.town}
+              </p>
+            </div>
+          )}
 
           <br />
-          <div className="editbtn">edit</div>
+          <div
+            className="editbtn"
+            onClick={() => {
+              seteditInd(adrindex + 1);
+            }}
+          >
+            edit
+          </div>
         </div>
       ))}
+      <br />
+      <div className="editbtn">Add address</div>
       <br />
     </div>
   );
