@@ -51,12 +51,20 @@ const userSchema=new mongoose.Schema({
     address:[addressSchema],
     password:String,
     gender:String,
+    verified:Boolean,
     bag:[{type: mongoose.Schema.Types.ObjectId, ref:'Product'}],
     wishlist:[{type: mongoose.Schema.Types.ObjectId, ref:'Product'}]
 
 })
 
+const UserOTPVerificationSchema=new mongoose.Schema({
+    userId:String,
+    otp:String,
+    createdAt:Date,
+    expiresAt:Date,
+});
 
+const UserOTPVerification=mongoose.model('UserOTPVerification',UserOTPVerificationSchema)
 const User=mongoose.model('User',userSchema);
 const Admin=mongoose.model('Admin',adminSchema);
 const Order=mongoose.model('Order',orderSchema);
@@ -66,7 +74,8 @@ export{
     User,
     Admin,
     Order,
-    Product
+    Product,
+    UserOTPVerification
 }
 
 

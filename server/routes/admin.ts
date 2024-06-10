@@ -33,7 +33,7 @@ adminrouter.post('/signup',async(req:Request,res:Response)=>{
                 httpOnly:true,
                 sameSite:"strict",
                 maxAge:60 * 60 * 24 * 30,
-                path: "/admin",
+                path: "/",
 
             })
 
@@ -62,7 +62,7 @@ adminrouter.post('/login',async(req:Request,res:Response)=>{
             httpOnly:true,
             sameSite:"strict",
             maxAge:30*24*60*60,
-            path:'/admin'
+            path:'/'
         })
         res.setHeader("Set-Cookie",serialised);
         // console.log('Response headers after login:', res.getHeaders());
