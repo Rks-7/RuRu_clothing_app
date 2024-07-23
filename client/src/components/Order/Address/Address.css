@@ -1,0 +1,71 @@
+.address{
+    padding:10vh 2vh 0vh 2vh;
+    height: 90vh;
+    background-color: #F5E9DC;
+}
+.addressmain{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 3rem 3rem 3rem 3rem;
+   
+    
+}
+.addressheading{
+    font-size: 2rem;
+    padding: 1rem;
+}
+.addressblock{
+    cursor: pointer;
+    background-color: #54b3d6;
+    padding: 1rem;
+    width: 40vw;
+    color: white;
+    border-radius: 5px;
+}  
+.addressblock:hover{
+    opacity: 0.5;
+}
+.addressblock.active{
+    cursor: pointer;
+    background-color: #388cab;
+    padding: 1rem;
+    width: 40vw;
+    color: white;
+    border-radius: 5px;
+}
+      
+.oneproddiv{
+    display: flex;
+    justify-content:space-between;
+}      
+.ordertotal{
+    display: flex;
+    justify-content: flex-end;
+}   
+.bill{
+    padding: 1rem;
+    background-color: #54b3d6;
+    width: 20vw;
+    color: white;
+    border-radius: 5px;
+    margin-left: 2rem;
+
+}        
+.paydiv{
+    display: flex;
+    justify-content: center;
+}   
+.paytxt{
+    display: flex;
+    justify-content:center;
+background-color: rgb(231, 200, 25);
+padding: 1rem;
+font-size: 2rem;
+width: 45rem;
+border-radius: 5px;
+} 
+.paytxt:hover{
+    opacity:0.5;
+    cursor: pointer;
+ }                                   

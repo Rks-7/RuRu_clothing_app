@@ -1,15 +1,19 @@
-import {atom} from 'recoil';
+import { atom } from "recoil";
+import { loadState } from "../../utils/localStorage";
 
-interface UserState{
-    isLoading:boolean;
-    userEmail:string | null;
-    userRole:String | null;
+interface UserState {
+  isLoading: boolean;
+  userEmail: string | null;
+  userRole: string | null;
 }
-export const userState=atom<UserState>({
-    key:'userState',
-    default:{
-        isLoading:true,
-        userEmail:null,
-        userRole:null
-    }
-})
+
+const savedUserState=loadState('userState');
+
+export const userState = atom<UserState>({
+  key: "userState",
+  default: savedUserState || {
+    isLoading: true,
+    userEmail: null, 
+    userRole: null, 
+  },
+});

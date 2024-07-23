@@ -1,0 +1,100 @@
+.namediv{
+    padding: 5rem;
+    display: flex;
+    justify-content: center;
+}
+.productdiv{
+    background-color: #F5E9DC;
+    border-radius: 5px;
+    border:solid 2px black;
+    padding: 2rem;
+    width: 40%;
+}
+.smallblocks{
+    display: flex;
+    padding: 1rem;
+
+}
+.smalldiv{
+    padding: 1rem;
+}
+.smalltxt{
+    width: 5rem;
+}
+.prodblock{
+    padding: 1rem;
+}
+/* .prodheading{
+    background-color: #54b3d6;
+    width: fit-content;
+    padding: 0.2rem;
+    margin: 0.5rem;
+    border-radius: 5px;
+
+} */
+
+.categorydiv{
+    background-color: #F5E9DC;
+        border-radius: 5px;
+        border: solid 2px black;
+        padding: 2rem;
+        width: 40%;
+        margin-left: 1rem;
+}
+.adddiv{
+    margin:1rem;
+    background-color: #54b3d6;
+        width: fit-content;
+        color: white;
+        padding: 1rem;
+        margin: 0.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+}
+.adddiv:hover{
+    opacity: 0.5;
+}
+.disimg{
+    width: 4rem;
+    border:solid 2px black;
+}
+.displayimgs{
+    display: flex;
+
+}
+.addimgdiv{
+    padding: 0.5rem;
+}
+.dltbtn{
+    display: flex;
+    justify-content: center;
+    background-color: red;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+.addprodsave:hover,.dltbtn:hover{
+    cursor: pointer;
+    opacity:0.5;
+
+}
+.addprodtitle{
+    font-size: 2rem;
+
+    padding: 1rem 1rem 1rem 0rem;
+
+}
+.addprodsave{
+    background-color: #54b3d6;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    margin-top: 4rem;
+
+}
+.warningtxt{
+    color: red;
+}
+

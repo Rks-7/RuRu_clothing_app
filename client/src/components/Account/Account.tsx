@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Account.css";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { userState } from "../../store/atoms/user";
 import { useNavigate } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -8,7 +8,7 @@ import { BASE_URL } from "../../config";
 import axios from "axios";
 import { TextField } from "@mui/material";
 
-interface IAddress {
+export interface IAddress {
   pincode: number;
   state: string;
   address: string;
@@ -20,7 +20,7 @@ interface IUser {
   _id: string;
   username: string;
   email: string;
-  mobileno: number;
+  mobileno: string;
   address: IAddress[];
   password: string;
   gender: string;
@@ -32,10 +32,18 @@ interface AccountDetailsProps {
 }
 const Account = () => {
   const User = useRecoilValue(userState);
+  const setUser=useSetRecoilState(userState)
   const [user, setuser] = useState<IUser | null>(null);
+  const [sectionNo, setsectionNo] = useState(1);
 
   const navigate = useNavigate();
-
+  
+  const handlelogout=async()=>{
+    const response = await axios.post(`${BASE_URL}/user/logout`);
+    console.log(response);
+    setUser({ isLoading: false, userEmail: null, userRole: null });
+    navigate("/");
+  }
   const init = async () => {
     try {
       const response = await axios.get(`${BASE_URL}/user/getuserdetails`, {
@@ -67,14 +75,26 @@ const Account = () => {
   return (
     <div className="account-main">
       <div className="account-tab-main">
-        <div className="account-tab">ORDERS</div>
-        <div className="account-tab">ACCOUNT</div>
-        <div className="account-tab">SIGN OUT</div>
+        <div className="account-tab" onClick={() => navigate('/userorders')}>
+          ORDERS
+        </div>
+        <div className="account-tab" onClick={() => setsectionNo(1)}>
+          ACCOUNT
+        </div>
+        <div className="account-tab" onClick={handlelogout}>SIGN OUT</div>
       </div>
 
       <div>
         <div className="selection-div">
-          <Accountdetails user={user} />
+          {sectionNo == 0 ? (
+            <div>
+              hello
+            </div>
+          ) : (
+            <div>
+              <Accountdetails user={user} />
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -82,16 +102,17 @@ const Account = () => {
 };
 
 function Accountdetails({ user }: AccountDetailsProps) {
-  const [username, setusername] = useState(user?.username);
+  const navigate=useNavigate();
   const [gender, setgender] = useState(user?.gender);
   const [mobileno, setmobileno] = useState(user?.mobileno);
   const [email, setemail] = useState(user?.email);
   const [address, setaddress] = useState<IAddress[]>([]);
   const [editInd, seteditInd] = useState(-1);
+  const [editMob, seteditMob] = useState(-1);
+  const [errormsg, seterrormsg] = useState("");
 
   useEffect(() => {
     if (user) {
-      setusername(user.username);
       setgender(user.gender);
       setmobileno(user.mobileno);
       setemail(user.email);
@@ -99,27 +120,77 @@ function Accountdetails({ user }: AccountDetailsProps) {
     }
   }, [user]);
 
+  const handleAddquestions=async()=>{
+    setaddress([
+      ...address,
+      {
+        pincode: 0,
+        state: "",
+        address: "",
+        town: "",
+        city_district: "",
+      },
+    ]);
+
+    seteditInd(address.length + 1);
+  }
+
+  const Submitaccountdetails=async()=>{
+    const response = await axios.post(
+      `${BASE_URL}/user/updateuserdetails`,
+      {
+        gender:gender,
+        mobileno:mobileno,
+        email:email,
+        address:address
+      },
+      {
+        withCredentials: true,
+      }
+    );
+
+    if(response.status==403){
+      console.log("response ::: ", response.data.msg);
+      seterrormsg(response.data.msg);
+    }
+    
+  }
+
+  const handleDelete=(index:number)=>{
+   const updatedAddress = [...address]; 
+   updatedAddress.splice(index, 1); 
+   setaddress(updatedAddress); 
+  
+  }
+
+  const handlemobilesubmit=async(mobileno:string)=>{
+    try {
+         const response = await axios.post(`${BASE_URL}/user/sendmobileotp`,{
+          id:user?._id,
+          mobileno:mobileno
+         });
+
+         navigate("/verifymobileOTP/" + user?._id + "/" + mobileno);
+    } catch (error:any) {
+      console.error("Error fetching user details", error);
+    }
+   
+  }
+      
+
   return (
     <div className="accountoption-section">
       <h3>Username:</h3>
       <br />
-      <div className="usernametxt">
-        <TextField
-          label=""
-          variant="outlined"
-          value={username}
-          onChange={(e: any) => {
-            setusername(e.target.value);
-          }}
-        />
-      </div>
+      <div className="editbtn">{user?.username}</div>
       <br />
       <h3>Email:</h3>
       <br />
+
       <div className="combinediv">
         <div className="emailtxt">{user?.email}</div>
-        <div className="editbtn">edit</div>
       </div>
+
       <br />
       <h3>Gender:</h3>
       <br />
@@ -155,8 +226,37 @@ function Accountdetails({ user }: AccountDetailsProps) {
       <h3>Mobile no:</h3>
       <br />
       <div className="combinediv">
-        <div className="emailtxt">{user?.mobileno}</div>
-        <div className="editbtn">edit</div>
+        {editMob != 1 ? (
+          <div className="combinediv">
+            <div className="emailtxt">{user?.mobileno}</div>
+            <div className="editbtn" onClick={async() => {
+              seteditMob(1)
+              const response = await axios.post(`${BASE_URL}/user/updateuserdetails`,{
+                verifiedmobile:false,
+                mobileno:""
+              })
+              console.log(response);
+            }}>
+              edit
+            </div>
+          </div>
+        ) : (
+          <div className="combinediv">
+            <TextField
+              label=""
+              variant="outlined"
+              value={mobileno}
+              onChange={(e: any) => {
+                setmobileno(e.target.value);
+              }}
+            />
+            <div className="editbtn" onClick={() => {
+              if(mobileno)
+              handlemobilesubmit(mobileno)}}>
+              save
+            </div>
+          </div>
+        )}
       </div>
       <br />
       <h3>Address:</h3>
@@ -165,7 +265,7 @@ function Accountdetails({ user }: AccountDetailsProps) {
         <div className="addressdiv">
           <p className="emailtxt">Address {adrindex + 1}:</p>
           <br />
-          {editInd != -1 ? (
+          {editInd == adrindex + 1 ? (
             <div>
               <div className="addresseditmain">
                 Address:
@@ -177,7 +277,7 @@ function Accountdetails({ user }: AccountDetailsProps) {
                   value={adr.address}
                   onChange={(e: any) => {
                     const updatedaddress = [...address];
-                    updatedaddress[adrindex + 1].address = e.target.value;
+                    updatedaddress[adrindex].address = e.target.value;
                     setaddress(updatedaddress);
                   }}
                 />
@@ -193,8 +293,7 @@ function Accountdetails({ user }: AccountDetailsProps) {
                     value={adr.city_district}
                     onChange={(e: any) => {
                       const updatedaddress = [...address];
-                      updatedaddress[adrindex + 1].city_district =
-                        e.target.value;
+                      updatedaddress[adrindex].city_district = e.target.value;
                       setaddress(updatedaddress);
                     }}
                   />
@@ -208,7 +307,7 @@ function Accountdetails({ user }: AccountDetailsProps) {
                     value={adr.pincode}
                     onChange={(e: any) => {
                       const updatedaddress = [...address];
-                      updatedaddress[adrindex + 1].pincode = e.target.value;
+                      updatedaddress[adrindex].pincode = e.target.value;
                       setaddress(updatedaddress);
                     }}
                   />
@@ -226,7 +325,7 @@ function Accountdetails({ user }: AccountDetailsProps) {
                     value={adr.state}
                     onChange={(e: any) => {
                       const updatedaddress = [...address];
-                      updatedaddress[adrindex + 1].state = e.target.value;
+                      updatedaddress[adrindex].state = e.target.value;
                       setaddress(updatedaddress);
                     }}
                   />
@@ -240,14 +339,23 @@ function Accountdetails({ user }: AccountDetailsProps) {
                     value={adr.town}
                     onChange={(e: any) => {
                       const updatedaddress = [...address];
-                      updatedaddress[adrindex + 1].town = e.target.value;
+                      updatedaddress[adrindex].town = e.target.value;
                       setaddress(updatedaddress);
                     }}
                   />
                 </div>
               </div>
               <br />
-                   
+              <div>
+                <div
+                  className="editbtn"
+                  onClick={() => {
+                    seteditInd(-1);
+                  }}
+                >
+                  Save
+                </div>
+              </div>
             </div>
           ) : (
             <div>
@@ -266,19 +374,36 @@ function Accountdetails({ user }: AccountDetailsProps) {
           )}
 
           <br />
-          <div
-            className="editbtn"
-            onClick={() => {
-              seteditInd(adrindex + 1);
-            }}
-          >
-            edit
-          </div>
+          {editInd == -1 && (
+            <div className="combinediv">
+              <div
+                className="editbtn"
+                onClick={() => {
+                  seteditInd(adrindex + 1);
+                }}
+              >
+                edit
+              </div>
+              <div
+                className="editbtndelete"
+                onClick={() => handleDelete(adrindex)}
+              >
+                delete
+              </div>
+            </div>
+          )}
         </div>
       ))}
       <br />
-      <div className="editbtn">Add address</div>
+      <div className="editbtn" onClick={handleAddquestions}>
+        Add address
+      </div>
       <br />
+      <br /><br />
+      <div className="savebtn" onClick={Submitaccountdetails}>Save details</div>
+      <div className="errormsg">
+        {errormsg}
+      </div>
     </div>
   );
 }

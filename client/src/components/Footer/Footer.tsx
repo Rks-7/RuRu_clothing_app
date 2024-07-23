@@ -10,16 +10,16 @@ const Footer = () => {
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-section about">
-            <h3>About Us</h3>
-            <p>
+            {/* <h3>About Us</h3> */}
+            <p className="footertxt">
               We are a team dedicated to providing the best products and
               services.
             </p>
           </div>
 
           <div className="footer-section contact">
-            <h3>Contact Us</h3>
-            <p>Email: rugvedscindia@gmail.com</p>
+            {/* <h3>Contact Us</h3> */}
+            <p className="footertxt">Email: rugvedscindia@gmail.com</p>
           </div>
           <div className="footer-section social">
             <h3>Follow Us</h3>

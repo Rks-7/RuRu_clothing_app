@@ -19,6 +19,24 @@ const Singleproduct = () => {
     const [relatedprod, setrelatedprod] = useState<Product[]>([]);
     const [currimg, setcurrimg] = useState("");
 
+   const addtoBag = async () => {
+     try {
+       const response = await axios.post(
+         `${BASE_URL}/user/addtobag/${productId}`,
+         {}, // Empty body
+         {
+           withCredentials: true,
+         }
+       );
+       alert(response.data.msg);
+     } catch (error:any) {
+       console.error(
+         "Error adding to bag:",
+         error.response ? error.response.data : error.message
+       );
+     }
+   };
+
 
     const init=async()=>{
             const getresponse=await axios.get(`${BASE_URL}/user/getallproducts`)
@@ -107,7 +125,7 @@ const Singleproduct = () => {
             <div className="mainprod-colour">{mainprod?.size}</div>
           </div>
           <br />
-          <div className="addtobag">
+          <div className="addtobag" onClick={()=>addtoBag()}>
             <p>ADD TO BAG</p>
           </div>
           <br />

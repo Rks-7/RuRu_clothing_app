@@ -120,3 +120,25 @@
 .relatedlink{
     text-decoration: none;
 }
+.subhead{
+    background-color: #54b3d6;
+    width: fit-content;
+    padding: 0.5rem;
+    color: white;
+    margin: 0rem 1rem 1rem 0rem;
+}
+.addrdiv{
+    display: flex;
+    
+
+}
+
+.addrsubdiv{
+    padding: 0.5rem;
+}
+.ordername{
+    font-size: 2rem;
+}
+.trackingtxt{
+    font-size: 3rem;
+}

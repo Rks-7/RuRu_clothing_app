@@ -7,6 +7,7 @@ import { userState } from "../../store/atoms/user";
 import {BASE_URL} from "../../config";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { clearState } from "../../utils/localStorage";
 
 const Navbar = () => {
   const navigate=useNavigate();
@@ -21,6 +22,7 @@ const Navbar = () => {
   const handleLogout=async()=>{
     const response=await axios.post(`${BASE_URL}/user/logout`);
     console.log(response);
+    clearState('userState');
     setUser({isLoading:false,userEmail:null,userRole:null});
     navigate("/");
 
@@ -48,15 +50,28 @@ const Navbar = () => {
               <div
                 onClick={() => {
                   if (User.userEmail !== null) {
-                    //path to the orders section of the user
+                    navigate('/userorders')
                   }
                 }}
               >
                 ORDERS
               </div>
-              <div onClick={()=>{
-                navigate('/account')
-              }}>ACCOUNT</div>
+              <div
+                onClick={() => {
+                  navigate("/account");
+                }}
+              >
+                ACCOUNT
+              </div>
+              {User.userRole == "admin" && (
+                <div
+                  onClick={() => {
+                    navigate("/addproduct");
+                  }}
+                >
+                  ADD PRODUCT
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -73,7 +88,12 @@ const Navbar = () => {
           </div>
         </a>
         <div className="rightbtns">
-          <div className="bag">
+          <div
+            className="bag"
+            onClick={() => {
+              navigate("/bag");
+            }}
+          >
             <PiBagSimpleBold className="baglogo" />
           </div>
         </div>

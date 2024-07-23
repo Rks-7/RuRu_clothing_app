@@ -17,6 +17,7 @@
     border: solid black 1px;
 }
 .account-tab:hover{
+    cursor: pointer;
 background-color: #54b3d6;
     color: white;
 }
@@ -54,6 +55,22 @@ background-color: #54b3d6;
     
 
 }
+.savebtn {
+    background-color: white;
+    color: #54b3d6;
+    border-radius: 5px;
+    width: fit-content;
+    padding: 1rem;
+    margin-left: 1rem;
+    height: fit-content;
+
+
+}
+.savebtn:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #54b3d6;
+}
 .editbtn:hover{
     cursor: pointer;
     opacity: 0.5;
@@ -83,4 +100,22 @@ background-color: #54b3d6;
 }
 .towneditmain{
     padding-left: 1rem;
+}
+.editbtndelete{
+    background-color: #EE4B2B;
+        color: white;
+        border-radius: 5px;
+        width: fit-content;
+        padding: 1rem;
+        margin-left: 1rem;
+        height: fit-content;
+}
+.editbtndelete:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+.errormsg{
+    color: red;
+    padding: 2px;
+
 }

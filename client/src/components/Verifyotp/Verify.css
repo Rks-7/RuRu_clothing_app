@@ -1,0 +1,24 @@
+.otpmain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10rem;
+}
+
+.otpdiv{
+border: solid #54b3d6 1px;
+padding: 3rem;
+box-shadow: 0 0 10px rgba(84, 179, 214, 0.5)
+}
+
+.btndiv{
+    display: flex;
+    justify-content: center;
+     margin-top: 2rem;
+}
+.errormsg{
+    display: flex;
+    justify-content: center;
+    color: red;
+    font-size: 1rem;
+}

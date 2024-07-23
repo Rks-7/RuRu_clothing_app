@@ -1,0 +1,99 @@
+.bagcard{
+    border: 1px solid black;
+    padding: 1rem;
+    display: flex;
+
+}
+.imgbag{
+    width: 8rem;
+
+}
+.bagmain{
+   padding: 11rem 8rem 8rem 8rem;
+}
+.imgdiv , .productinfo, .productpriceinfo {
+    padding: 1rem;
+}
+.productinfo{
+    width: 55rem;
+}
+.productname{
+    font-size: 2rem;
+}
+.productprice{
+    background-color: #54b3d6;
+    color: white;
+    padding: 0.5rem;
+    font-size: 2rem;
+}
+.productdetail{
+    padding-top: 2rem;
+}
+.productsize{
+padding-top: 0.5rem;
+}
+.productpriceinfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.productremove{
+    background-color: #d82f0e;
+    padding: 0.5rem;
+    border-radius: 4px;
+    color: white;
+    width: fit-content;
+
+}
+.productremove:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+.quantityflex{
+    display: flex;
+    justify-content: space-evenly;
+
+}
+.circle{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    background-color: #54b3d6;
+    padding: 0.4rem;
+    width: 0.5rem;
+}
+.circle:hover{
+    opacity: 0.5;
+}
+
+.nextbutton {
+    background-color: rgb(231, 200, 25);
+    padding: 0.5rem;
+    border-radius: 4px;
+    width: fit-content;
+    font-size: 2rem;
+
+}
+
+.nextbutton:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+.nextbuttonmain{
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.flexrow{
+    padding-top: 16rem;
+    display: flex;
+    justify-content: center;
+}
+.emptybaglogo{
+    font-size: 10rem;
+}
+.emptybagtxt{
+    font-size: 2rem;
+}
