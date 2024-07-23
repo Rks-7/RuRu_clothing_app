@@ -14,7 +14,7 @@ const reviewSchema=new mongoose.Schema({
 })
 
 const productSchema=new mongoose.Schema({
-    productname:String,
+    productname:String,//
     category:String,
     count:Number,
     productimg:[String],
@@ -26,33 +26,43 @@ const productSchema=new mongoose.Schema({
     reviews:[reviewSchema],
 })
 
+const addressSchema = new mongoose.Schema({
+  pincode: Number,
+  state: String,
+  address: String,
+  town: String,
+  city_district: String,
+});
+
 const orderSchema=new mongoose.Schema({
-    orderedproducts:[productSchema],
+    orderedproduct:productSchema,
     quantity:Number,
     orderowner:String,
+    ordertotal:Number,
     paid:String,
-    deliveryadr:String,
+    deliveryadr:addressSchema,
     Tracking :String,
+    placed:Boolean
     
 
 })
-const addressSchema=new mongoose.Schema({
-    pincode:Number,
-    state:String,
-    address:String,
-    town:String,
-    city_district:String
-})
+
+
+const bagSchema = new mongoose.Schema({
+  prod: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+  quantity:Number
+});
 
 const userSchema=new mongoose.Schema({
     username:String,
     email:String,
-    mobileno:Number,
+    mobileno:String,
     address:[addressSchema],
     password:String,
     gender:String,
     verified:Boolean,
-    bag:[{type: mongoose.Schema.Types.ObjectId, ref:'Product'}],
+    verifiedmobile:Boolean,
+    bag:[bagSchema],
     wishlist:[{type: mongoose.Schema.Types.ObjectId, ref:'Product'}]
 
 })
@@ -64,18 +74,27 @@ const UserOTPVerificationSchema=new mongoose.Schema({
     expiresAt:Date,
 });
 
+const UsermobileOTPverificationSchema = new mongoose.Schema({
+  userId: String,
+  otp: String,
+  createdAt: Date,
+  expiresAt: Date,
+});
+
 const UserOTPVerification=mongoose.model('UserOTPVerification',UserOTPVerificationSchema)
+const UsermobileOTPverification=mongoose.model('UsermobileOTPVerification',UsermobileOTPverificationSchema)
 const User=mongoose.model('User',userSchema);
 const Admin=mongoose.model('Admin',adminSchema);
 const Order=mongoose.model('Order',orderSchema);
 const Product=mongoose.model('Product',productSchema);
 
-export{
-    User,
-    Admin,
-    Order,
-    Product,
-    UserOTPVerification
-}
+export {
+  User,
+  Admin,
+  Order,
+  Product,
+  UserOTPVerification,
+  UsermobileOTPverification,
+};
 
 

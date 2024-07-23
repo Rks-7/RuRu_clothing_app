@@ -18,9 +18,9 @@ interface AuthenticatedRequest extends Request {
 }
 
 const requireAdminAuth=(req:AuthenticatedRequest,res:Response,next:NextFunction)=>{
-    const cookie=req.cookies.adminJWT;
+    const cookie=req.cookies?.adminJWT;
     if(!cookie){
-        return res.redirect('/signin');
+        return res.status(403).json({ msg: "Not logged in" });
     }
 
     try {
@@ -29,16 +29,16 @@ const requireAdminAuth=(req:AuthenticatedRequest,res:Response,next:NextFunction)
         if(!decoded || !decoded.username || !decoded.role){
             res.status(403).json({msg:"Invalid token"});
         }
-        if(decoded.role!=='admin')return res.redirect('/signin');
+        if(decoded.role!=='admin')return res.status(403).json({ msg: "Unauthorized role" });
 
-        const admin = {
+        req.user = {
             username: decoded.username,
             role: decoded.role
         };
 
         
         
-        req.user = admin;
+        
         next();
     } catch (error) {
         console.error("Error verifying admin JWT:", error);
@@ -46,4 +46,4 @@ const requireAdminAuth=(req:AuthenticatedRequest,res:Response,next:NextFunction)
     }
 }
 
-export default requireAdminAuth;
+export  {requireAdminAuth,AuthenticatedRequest} ;
